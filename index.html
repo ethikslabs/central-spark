@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Central Spark Psychotherapy – Bondi Junction</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #f5f0e8;
+  --warm-white: #faf7f2;
+  --terracotta: #b5603c;
+  --terracotta-light: #d4845e;
+  --sage: #7a8c72;
+  --sage-light: #a8b89f;
+  --charcoal: #2c2825;
+  --mid: #5a5450;
+  --rule: rgba(90,84,80,0.15);
+  --fd: 'Cormorant Garamond', Georgia, serif;
+  --fb: 'Jost', sans-serif;
+  --nav-h: 72px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--warm-white);
+  color: var(--charcoal);
+  font-family: var(--fb);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.5;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--nav-h); z-index: 500;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5vw;
+  background: rgba(250,247,242,0.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.nav-logo {
+  font-family: var(--fd); font-size: 1.2rem; font-weight: 400;
+  letter-spacing: 0.02em; color: var(--charcoal);
+  text-decoration: none; cursor: pointer;
+}
+.nav-logo span { color: var(--terracotta); }
+
+.nav-links { display: flex; gap: 2.8rem; list-style: none; }
+.nav-links a {
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.13em;
+  text-transform: uppercase; color: var(--mid);
+  text-decoration: none; cursor: pointer;
+  transition: color 0.2s; position: relative; padding-bottom: 2px;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 1px; background: var(--terracotta); transition: width 0.25s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--terracotta); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+.nav-book {
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.13em;
+  text-transform: uppercase; color: var(--warm-white);
+  background: var(--terracotta); padding: 0.6rem 1.5rem;
+  cursor: pointer; border: none; text-decoration: none; transition: background 0.2s;
+}
+.nav-book:hover { background: var(--terracotta-light); }
+
+.nav-burger {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; background: none; border: none; padding: 4px;
+}
+.nav-burger span { display: block; width: 24px; height: 1.5px; background: var(--charcoal); }
+
+/* MOBILE NAV */
+.mobile-nav {
+  display: none; position: fixed; top: var(--nav-h); left: 0; right: 0;
+  background: rgba(250,247,242,0.97); backdrop-filter: blur(14px);
+  z-index: 499; padding: 2rem 5vw 3rem; border-bottom: 1px solid var(--rule);
+  flex-direction: column; gap: 0;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  font-size: 0.82rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--mid); text-decoration: none; cursor: pointer;
+  padding: 1rem 0; border-bottom: 1px solid var(--rule); transition: color 0.2s;
+}
+.mobile-nav a:hover { color: var(--terracotta); }
+
+/* PAGES */
+#app { padding-top: var(--nav-h); }
+.page { display: none; }
+.page.active { display: block; }
+
+/* SHARED */
+.rule { height: 1px; background: var(--rule); margin: 0 5vw; }
+.section-eyebrow {
+  font-family: var(--fb); font-size: 0.68rem; font-weight: 400;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--sage);
+  margin-bottom: 1.2rem;
+}
+.display-h { font-family: var(--fd); font-weight: 300; line-height: 1.1; }
+.display-h em { font-style: italic; color: var(--terracotta); }
+
+.btn-primary {
+  display: inline-block; font-family: var(--fb);
+  font-size: 0.76rem; font-weight: 400; letter-spacing: 0.13em;
+  text-transform: uppercase; color: var(--warm-white);
+  background: var(--terracotta); padding: 0.9rem 2.2rem;
+  text-decoration: none; cursor: pointer; border: none;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: var(--terracotta-light); transform: translateY(-1px); }
+
+.btn-ghost {
+  display: inline-block; font-family: var(--fb);
+  font-size: 0.76rem; font-weight: 400; letter-spacing: 0.13em;
+  text-transform: uppercase; color: var(--mid);
+  text-decoration: none; cursor: pointer;
+  border-bottom: 1px solid var(--rule); padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.btn-ghost:hover { color: var(--terracotta); border-color: var(--terracotta); }
+
+/* PAGE HERO (inner pages) */
+.page-hero {
+  padding: 7rem 5vw 5rem; background: var(--cream);
+  border-bottom: 1px solid var(--rule);
+}
+.page-hero h1 { font-size: clamp(2.4rem, 4.5vw, 4.5rem); }
+
+/* ── HOME HERO ── */
+.home-hero {
+  min-height: calc(100vh - var(--nav-h));
+  display: grid; grid-template-columns: 1fr 1fr; overflow: hidden;
+}
+
+.home-hero-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 8vw 5vw 8vw 8vw;
+}
+
+.home-hero-left .eyebrow {
+  font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--sage); margin-bottom: 1.8rem;
+  opacity: 0; animation: fadeUp 0.9s ease 0.15s forwards;
+}
+
+.home-hero-left h1 {
+  font-family: var(--fd); font-size: clamp(3.2rem, 5.8vw, 6rem);
+  font-weight: 300; line-height: 1.05; margin-bottom: 2rem;
+  opacity: 0; animation: fadeUp 0.9s ease 0.3s forwards;
+}
+.home-hero-left h1 em { font-style: italic; color: var(--terracotta); }
+
+.home-hero-left p {
+  font-size: 1.05rem; color: var(--mid); max-width: 46ch; margin-bottom: 3rem;
+  opacity: 0; animation: fadeUp 0.9s ease 0.45s forwards;
+}
+
+.hero-actions {
+  display: flex; gap: 1.8rem; align-items: center;
+  opacity: 0; animation: fadeUp 0.9s ease 0.6s forwards;
+}
+
+.home-hero-right {
+  background: var(--cream); position: relative; overflow: hidden;
+}
+.home-hero-right::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 55% 55% at 65% 38%, rgba(181,96,60,0.13) 0%, transparent 70%),
+    radial-gradient(ellipse 45% 45% at 30% 65%, rgba(122,140,114,0.16) 0%, transparent 65%);
+}
+
+.hero-svg-wrap {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); width: min(52vw, 480px);
+  opacity: 0; animation: fadeIn 1.8s ease 0.4s forwards;
+}
+
+.hero-tags {
+  position: absolute; bottom: 2.5rem; left: 2.5rem; right: 2.5rem;
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+}
+
+.tag {
+  font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--mid); background: rgba(250,247,242,0.75);
+  backdrop-filter: blur(6px); border: 1px solid var(--rule); padding: 0.38rem 0.85rem;
+}
+
+/* HOME ABOUT */
+.home-about {
+  padding: 6rem 5vw; display: grid;
+  grid-template-columns: 200px 1fr; gap: 6vw; align-items: start;
+}
+.home-about-label {
+  font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--sage); padding-top: 0.5rem;
+}
+.home-about-body h2 { font-size: clamp(1.9rem, 3.2vw, 3rem); margin-bottom: 1.5rem; }
+.home-about-body p { font-size: 1rem; color: var(--mid); max-width: 68ch; margin-bottom: 0.9rem; }
+
+/* HOME SERVICES */
+.home-services { background: var(--cream); padding: 7rem 5vw; }
+.home-services-hd { margin-bottom: 4rem; }
+.home-services-hd h2 { font-size: clamp(1.9rem, 3.2vw, 3rem); }
+
+.services-grid {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 1.5px; background: var(--rule);
+}
+.svc-card { background: var(--cream); padding: 2.5rem 2rem; cursor: pointer; transition: background 0.25s; }
+.svc-card:hover { background: #ede8df; }
+.svc-num {
+  font-family: var(--fd); font-size: 2.8rem; font-weight: 300;
+  color: var(--terracotta); opacity: 0.28; line-height: 1; margin-bottom: 1rem;
+}
+.svc-card h3 { font-family: var(--fd); font-size: 1.5rem; font-weight: 400; margin-bottom: 0.7rem; }
+.svc-card p { font-size: 0.88rem; color: var(--mid); line-height: 1.65; margin-bottom: 1.2rem; }
+.svc-link {
+  font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--terracotta); cursor: pointer;
+  border-bottom: 1px solid rgba(181,96,60,0.3); padding-bottom: 1px;
+}
+
+/* HOME TESTIMONIALS */
+.home-testimonials { padding: 7rem 5vw; }
+.home-testimonials h2 { font-size: clamp(1.9rem, 3.2vw, 3rem); margin-bottom: 4rem; }
+
+.testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--rule); }
+.testimonial { background: var(--warm-white); padding: 3rem; position: relative; }
+.testimonial::before {
+  content: '\201C'; font-family: var(--fd); font-size: 5rem; line-height: 1;
+  color: var(--terracotta); opacity: 0.18;
+  position: absolute; top: 1.8rem; left: 2.8rem;
+}
+.testimonial blockquote {
+  font-family: var(--fd); font-size: 1.1rem; font-weight: 300; font-style: italic;
+  line-height: 1.7; color: var(--charcoal); margin-bottom: 1.5rem; padding-top: 0.8rem;
+}
+.testimonial cite {
+  font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--sage); font-style: normal;
+}
+
+/* HOME CAREENA */
+.home-careena {
+  background: var(--charcoal); color: var(--cream); padding: 7rem 5vw;
+  display: grid; grid-template-columns: 1.4fr 1fr; gap: 8vw; align-items: start;
+}
+.home-careena h2 { font-size: clamp(2rem, 3.5vw, 3.5rem); margin-bottom: 2rem; }
+.home-careena h2 em { color: var(--terracotta-light); }
+.home-careena p { font-size: 0.95rem; color: rgba(245,240,232,0.65); line-height: 1.8; max-width: 60ch; margin-bottom: 0.9rem; }
+.careena-actions { margin-top: 2rem; }
+
+.btn-inv {
+  display: inline-block; font-family: var(--fb);
+  font-size: 0.76rem; letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--charcoal); background: var(--cream); padding: 0.9rem 2.2rem;
+  cursor: pointer; border: none; text-decoration: none; transition: background 0.2s;
+}
+.btn-inv:hover { background: var(--warm-white); }
+
+.cred-dark-hd {
+  font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--sage-light); margin-bottom: 1.2rem;
+}
+.cred-dark-list { list-style: none; border-top: 1px solid rgba(245,240,232,0.1); }
+.cred-dark-list li {
+  padding: 0.7rem 0; border-bottom: 1px solid rgba(245,240,232,0.08);
+  font-size: 0.86rem; color: rgba(245,240,232,0.55);
+  display: flex; gap: 1rem; align-items: baseline;
+}
+.cred-dark-list li::before { content: '–'; color: var(--terracotta-light); flex-shrink: 0; }
+
+/* HOME CONTACT */
+.home-contact { padding: 8rem 5vw; display: grid; grid-template-columns: 1fr 1fr; gap: 8vw; align-items: start; }
+.home-contact h2 { font-size: clamp(2.2rem, 4vw, 4rem); margin-bottom: 2rem; }
+
+.contact-details { display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 2.5rem; }
+.contact-row { display: flex; gap: 1.5rem; align-items: baseline; }
+.contact-lbl {
+  font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--sage); min-width: 80px; flex-shrink: 0;
+}
+.contact-val { font-size: 0.95rem; color: var(--mid); }
+.contact-val a { color: var(--mid); text-decoration: none; transition: color 0.2s; }
+.contact-val a:hover { color: var(--terracotta); }
+
+/* FORM */
+.contact-form { display: flex; flex-direction: column; gap: 1rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-field label { font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); }
+.form-field input, .form-field textarea {
+  background: var(--cream); border: 1px solid var(--rule);
+  padding: 0.85rem 1rem; font-family: var(--fb); font-size: 0.9rem;
+  font-weight: 300; color: var(--charcoal); outline: none;
+  transition: border-color 0.2s; width: 100%; resize: vertical; border-radius: 0;
+}
+.form-field input:focus, .form-field textarea:focus { border-color: var(--terracotta); }
+.form-submit {
+  font-family: var(--fb); font-size: 0.76rem; letter-spacing: 0.13em;
+  text-transform: uppercase; color: var(--warm-white);
+  background: var(--terracotta); border: none; padding: 0.95rem 2.4rem;
+  cursor: pointer; align-self: flex-start; transition: background 0.2s, transform 0.15s;
+}
+.form-submit:hover { background: var(--terracotta-light); transform: translateY(-1px); }
+.form-submit:disabled { background: var(--sage); cursor: default; transform: none; }
+
+/* PSYCHOTHERAPY PAGE */
+.psych-intro { padding: 5rem 5vw 2rem; max-width: 76ch; }
+.psych-intro p { font-size: 1.05rem; color: var(--mid); }
+
+.modality-section {
+  padding: 4.5rem 5vw; display: grid;
+  grid-template-columns: 260px 1fr; gap: 6vw; align-items: start;
+  border-top: 1px solid var(--rule);
+}
+.modality-section:nth-child(even) { background: var(--cream); }
+
+.modality-label { position: sticky; top: calc(var(--nav-h) + 2rem); }
+.modality-label .num {
+  font-family: var(--fd); font-size: 4rem; font-weight: 300;
+  color: var(--terracotta); opacity: 0.22; line-height: 1; margin-bottom: 0.5rem;
+}
+.modality-label h2 { font-family: var(--fd); font-size: 1.8rem; font-weight: 400; line-height: 1.2; }
+
+.modality-body h3 {
+  font-family: var(--fd); font-size: 1.3rem; font-weight: 400;
+  margin: 1.8rem 0 0.6rem; color: var(--charcoal);
+}
+.modality-body h3:first-child { margin-top: 0; }
+.modality-body p { font-size: 0.95rem; color: var(--mid); max-width: 68ch; margin-bottom: 0.7rem; line-height: 1.75; }
+.modality-body ul { margin: 0.6rem 0 1rem; padding-left: 0; list-style: none; }
+.modality-body ul li {
+  font-size: 0.92rem; color: var(--mid); padding: 0.35rem 0 0.35rem 1.5rem;
+  position: relative; line-height: 1.6;
+}
+.modality-body ul li::before { content: '–'; position: absolute; left: 0; color: var(--terracotta); }
+
+/* EMDR PAGE */
+.emdr-intro {
+  padding: 5rem 5vw; display: grid; grid-template-columns: 1fr 1fr;
+  gap: 8vw; align-items: center; background: var(--cream);
+}
+.emdr-intro p { font-size: 1rem; color: var(--mid); max-width: 58ch; margin-bottom: 0.9rem; }
+.emdr-visual { display: flex; align-items: center; justify-content: center; }
+
+.emdr-body { padding: 5rem 5vw; }
+
+.emdr-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: var(--rule); margin: 3rem 0; }
+.emdr-step { background: var(--warm-white); padding: 2.5rem 2rem; }
+.step-num {
+  font-family: var(--fd); font-size: 2.5rem; font-weight: 300;
+  color: var(--terracotta); opacity: 0.3; margin-bottom: 0.8rem;
+}
+.emdr-step h3 { font-family: var(--fd); font-size: 1.25rem; font-weight: 400; margin-bottom: 0.7rem; }
+.emdr-step p { font-size: 0.9rem; color: var(--mid); line-height: 1.7; }
+
+.emdr-conditions { padding: 5rem 5vw; background: var(--charcoal); color: var(--cream); }
+.emdr-conditions h2 { font-size: clamp(1.9rem, 3vw, 3rem); margin-bottom: 3rem; }
+.emdr-conditions h2 em { font-style: italic; color: var(--terracotta-light); }
+
+.conditions-list { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+.condition-pill { border: 1px solid rgba(245,240,232,0.15); padding: 1.2rem 1.5rem; font-family: var(--fd); font-size: 1.05rem; color: rgba(245,240,232,0.7); }
+
+/* ABOUT PAGE */
+.about-main { padding: 5rem 5vw; display: grid; grid-template-columns: 1fr 1fr; gap: 8vw; align-items: start; }
+.about-main p { font-size: 1rem; color: var(--mid); max-width: 60ch; margin-bottom: 1rem; line-height: 1.8; }
+
+.careena-photo-wrap {
+  position: relative;
+}
+.careena-photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  filter: saturate(0.92) contrast(1.02);
+}
+.careena-photo-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(44,40,37,0.72) 0%, transparent 100%);
+  padding: 2.5rem 1.8rem 1.5rem;
+  color: var(--cream);
+}
+.careena-photo-caption h3 {
+  font-family: var(--fd);
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 0.2rem;
+}
+.careena-photo-caption p {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.65);
+  margin: 0;
+}
+
+/* MAP */
+.map-wrap {
+  width: 100%;
+  height: 380px;
+  border: 1px solid var(--rule);
+  overflow: hidden;
+}
+.map-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  filter: saturate(0.7) contrast(1.05);
+}
+
+.about-story { padding: 5rem 5vw; background: var(--cream); border-top: 1px solid var(--rule); }
+.story-inner { max-width: 70ch; }
+.story-inner h2 { font-size: clamp(1.9rem, 3vw, 3rem); margin-bottom: 2rem; }
+.story-inner p { font-size: 1rem; color: var(--mid); margin-bottom: 1rem; line-height: 1.8; }
+
+.about-quals { padding: 5rem 5vw; display: grid; grid-template-columns: 1fr 1fr; gap: 6vw; }
+.about-quals h2 { font-size: clamp(1.9rem, 3vw, 3rem); margin-bottom: 2.5rem; }
+.quals-list { list-style: none; border-top: 1px solid var(--rule); }
+.quals-list li {
+  padding: 0.85rem 0; border-bottom: 1px solid var(--rule);
+  font-size: 0.9rem; color: var(--mid); display: flex; gap: 1rem; align-items: baseline;
+}
+.quals-list li::before { content: '–'; color: var(--terracotta); flex-shrink: 0; }
+
+/* FAQ PAGE */
+.faq-body { padding: 5rem 5vw; display: grid; grid-template-columns: 260px 1fr; gap: 8vw; align-items: start; }
+.faq-aside { position: sticky; top: calc(var(--nav-h) + 2rem); }
+.faq-aside p { font-size: 0.9rem; color: var(--mid); margin-bottom: 1.5rem; line-height: 1.7; }
+
+.faq-list { display: flex; flex-direction: column; }
+.faq-item { border-top: 1px solid var(--rule); }
+.faq-item:last-child { border-bottom: 1px solid var(--rule); }
+
+.faq-q {
+  width: 100%; text-align: left; background: none; border: none;
+  padding: 1.8rem 0; display: flex; justify-content: space-between;
+  align-items: center; gap: 2rem; cursor: pointer;
+  font-family: var(--fd); font-size: 1.2rem; font-weight: 400;
+  color: var(--charcoal); transition: color 0.2s;
+}
+.faq-q:hover, .faq-q.open { color: var(--terracotta); }
+
+.faq-icon {
+  width: 18px; height: 18px; flex-shrink: 0; position: relative; color: currentColor;
+}
+.faq-icon::before, .faq-icon::after {
+  content: ''; position: absolute; top: 50%; left: 50%; background: currentColor; transition: transform 0.3s, opacity 0.3s;
+}
+.faq-icon::before { width: 12px; height: 1px; transform: translate(-50%,-50%); }
+.faq-icon::after { width: 1px; height: 12px; transform: translate(-50%,-50%); }
+.faq-q.open .faq-icon::after { opacity: 0; transform: translate(-50%,-50%) rotate(90deg); }
+
+.faq-a { display: none; padding: 0 0 2rem; font-size: 0.95rem; color: var(--mid); line-height: 1.8; max-width: 68ch; }
+.faq-a.open { display: block; }
+
+/* FOOTER */
+footer {
+  background: var(--charcoal); color: rgba(245,240,232,0.45);
+  padding: 3rem 5vw; display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 1.5rem;
+  border-top: 1px solid rgba(245,240,232,0.06);
+}
+.footer-logo { font-family: var(--fd); font-size: 1.1rem; color: var(--cream); cursor: pointer; }
+.footer-logo span { color: var(--terracotta-light); }
+.footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+.footer-links a {
+  font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(245,240,232,0.38); text-decoration: none; cursor: pointer; transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--terracotta-light); }
+.footer-copy { font-size: 0.68rem; letter-spacing: 0.05em; }
+
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:0.92; } }
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+  .home-hero { grid-template-columns: 1fr; }
+  .home-hero-right { display: none; }
+  .home-about { grid-template-columns: 1fr; gap: 1.5rem; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .home-careena { grid-template-columns: 1fr; }
+  .home-contact { grid-template-columns: 1fr; }
+  .modality-section { grid-template-columns: 1fr; }
+  .modality-label { position: static; }
+  .emdr-intro { grid-template-columns: 1fr; }
+  .emdr-steps { grid-template-columns: 1fr; }
+  .conditions-list { grid-template-columns: 1fr 1fr; }
+  .about-main { grid-template-columns: 1fr; }
+  .about-quals { grid-template-columns: 1fr; }
+  .faq-body { grid-template-columns: 1fr; }
+  .faq-aside { position: static; }
+  .nav-links { display: none; }
+  .nav-burger { display: flex; }
+  footer { flex-direction: column; text-align: center; }
+}
+@media (max-width: 600px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .conditions-list { grid-template-columns: 1fr; }
+  .home-hero-left { padding: 7vw 6vw; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" onclick="go('home')">Central <span>Spark</span></a>
+  <ul class="nav-links">
+    <li><a onclick="go('psychotherapy')" data-p="psychotherapy">Psychotherapy</a></li>
+    <li><a onclick="go('emdr')" data-p="emdr">EMDR</a></li>
+    <li><a onclick="go('about')" data-p="about">About</a></li>
+    <li><a onclick="go('faq')" data-p="faq">FAQ</a></li>
+    <li><a onclick="go('contact')" data-p="contact">Contact</a></li>
+  </ul>
+  <a class="nav-book" onclick="go('contact')">Book Now</a>
+  <button class="nav-burger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-nav" id="mNav">
+  <a onclick="go('home');closeMenu()">Home</a>
+  <a onclick="go('psychotherapy');closeMenu()">Psychotherapy</a>
+  <a onclick="go('emdr');closeMenu()">EMDR Therapy</a>
+  <a onclick="go('about');closeMenu()">About</a>
+  <a onclick="go('faq');closeMenu()">FAQ</a>
+  <a onclick="go('contact');closeMenu()">Contact</a>
+</div>
+
+<div id="app">
+
+<!-- ════ HOME ════ -->
+<div class="page active" id="page-home">
+
+  <section class="home-hero">
+    <div class="home-hero-left">
+      <p class="eyebrow">EMDR &amp; Depth Psychotherapy · Bondi Junction</p>
+      <h1>Heal,<br>grow<br>&amp; <em>thrive.</em></h1>
+      <p>Down-to-earth, effective psychotherapy in Sydney. Specialising in trauma, grief, chronic health, and life transitions — in person and online.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" onclick="go('contact')">Book a session</a>
+        <a class="btn-ghost" onclick="go('about')">Learn more</a>
+      </div>
+    </div>
+    <div class="home-hero-right">
+      <div class="hero-svg-wrap">
+        <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <circle cx="250" cy="250" r="225" stroke="rgba(181,96,60,0.12)" stroke-width="1"/>
+          <circle cx="250" cy="250" r="185" stroke="rgba(122,140,114,0.18)" stroke-width="1"/>
+          <circle cx="250" cy="250" r="145" stroke="rgba(181,96,60,0.09)" stroke-width="0.75"/>
+          <path d="M250 25 C345 115 430 200 430 250 C430 335 345 430 250 475 C155 430 70 335 70 250 C70 200 155 115 250 25Z" stroke="rgba(181,96,60,0.22)" stroke-width="1.5" fill="rgba(181,96,60,0.04)"/>
+          <path d="M250 80 Q325 178 372 250 Q325 322 250 420 Q175 322 128 250 Q175 178 250 80Z" stroke="rgba(122,140,114,0.18)" stroke-width="1" fill="rgba(122,140,114,0.05)"/>
+          <path d="M250 155 L262 232 L328 250 L262 268 L250 345 L238 268 L172 250 L238 232 Z" fill="rgba(181,96,60,0.32)"/>
+          <text x="250" y="448" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="13" fill="rgba(90,84,80,0.4)" letter-spacing="7">CENTRAL SPARK</text>
+        </svg>
+      </div>
+      <div class="hero-tags">
+        <span class="tag">PACFA Registered #32833</span>
+        <span class="tag">Full Member EMDRAA</span>
+        <span class="tag">Professional Supervisor</span>
+        <span class="tag">Private Practice since 2013</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <section class="home-about">
+    <div class="home-about-label">About</div>
+    <div class="home-about-body">
+      <h2 class="display-h">There is a <em>spark</em> within you<br>that cannot be extinguished.</h2>
+      <p>Through various difficulties of life we become disconnected from the source of that vital energy. It is the privileged task of the therapist to support clients through their own process of reconnection — what we mean by recovery.</p>
+      <p>Central Spark has been serving Bondi Junction and online since 2013. I work weekly or fortnightly at <strong>9–13 Bronte Rd Bondi Junction</strong> and via telehealth across Sydney and beyond.</p>
+      <p style="margin-top:1.5rem;"><a class="btn-ghost" onclick="go('about')">Read more about Careena</a></p>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <section class="home-services">
+    <div class="home-services-hd">
+      <p class="section-eyebrow">Therapeutic approaches</p>
+      <h2 class="display-h">How we <em>work together</em></h2>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card" onclick="go('emdr')">
+        <div class="svc-num">01</div>
+        <h3>EMDR Therapy</h3>
+        <p>A focused, evidence-based approach that helps the brain reprocess distressing memories so they no longer feel immediate, overwhelming, or stuck.</p>
+        <span class="svc-link">Learn more</span>
+      </div>
+      <div class="svc-card" onclick="go('psychotherapy')">
+        <div class="svc-num">02</div>
+        <h3>Gestalt Therapy</h3>
+        <p>A holistic, present-centred approach fostering self-awareness, personal insight, and authentic contact with yourself and others.</p>
+        <span class="svc-link">Learn more</span>
+      </div>
+      <div class="svc-card" onclick="go('psychotherapy')">
+        <div class="svc-num">03</div>
+        <h3>Depth Enquiry™</h3>
+        <p>Innovative therapeutic work for resistant traumas and deep negative beliefs — drawing on EMDR, somatic theory, and Gestalt principles.</p>
+        <span class="svc-link">Learn more</span>
+      </div>
+      <div class="svc-card" onclick="go('psychotherapy')">
+        <div class="svc-num">04</div>
+        <h3>Applied Mindfulness</h3>
+        <p>Practical, grounded mindfulness integrated into therapeutic work — building present-moment awareness and emotional regulation capacity.</p>
+        <span class="svc-link">Learn more</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <section class="home-testimonials">
+    <h2 class="display-h">What clients <em>say</em></h2>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <blockquote>Had tried with many psychologists and psychiatrists but this type of therapy was exactly what I needed. Felt like a great balance of nurturing support and a lot of insight. Careena has a very comforting presence which I was very relieved to finally find.</blockquote>
+        <cite>Natasha — Google Review</cite>
+      </div>
+      <div class="testimonial">
+        <blockquote>Careena is a wonderful therapist with great capacity to engage with the somatic and intellectual aspects of healing and growth. I learnt so many valuable skills from working with her that I practise every day.</blockquote>
+        <cite>Hannah Harris — Google Review</cite>
+      </div>
+      <div class="testimonial">
+        <blockquote>Careena is one of a kind and a very experienced psychotherapist. She is very thoughtful and her way of practising comes at the right time for your best outcome. Highly recommended.</blockquote>
+        <cite>Foxey Studio — Google Review</cite>
+      </div>
+      <div class="testimonial">
+        <blockquote>Anxiety was massive and I felt stuck. Careena is a legend — easy to talk to and she doesn't waste time but she listens real good. She helped me figure things out without forcing me to talk about the past if I didn't want to.</blockquote>
+        <cite>Blair R — Google Review</cite>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-careena">
+    <div>
+      <h2 class="display-h">About <em>Careena Cook</em></h2>
+      <p>Careena has held various counselling and rehabilitation roles for over 25 years. Combined with a deep love of learning, she brings a depth and breadth of knowledge that goes well beyond procedure and technique.</p>
+      <p>She is a firm believer that therapists should walk the walk — undergoing her own therapy and regular clinical supervision, remaining committed to deepening her practice through ongoing professional development.</p>
+      <p>Careena has been in private practice since 2013, and was among the first therapists in Australia trained in Depth Enquiry™.</p>
+      <div class="careena-actions">
+        <a class="btn-inv" onclick="go('about')">Full profile</a>
+      </div>
+    </div>
+    <div>
+      <p class="cred-dark-hd">Qualifications &amp; memberships</p>
+      <ul class="cred-dark-list">
+        <li>Master of Counselling &amp; Psychotherapy (MCAP)</li>
+        <li>Graduate Diploma of Rehabilitation Counselling</li>
+        <li>Graduate Certificate Gestalt Therapy</li>
+        <li>Bachelor of Arts (Philosophy, Sociology)</li>
+        <li>Clinical Psychotherapist — PACFA #32833</li>
+        <li>Full Member of EMDRAA</li>
+        <li>Professional Supervisor, Level 4</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="home-contact">
+    <div>
+      <p class="section-eyebrow">Get in touch</p>
+      <h2 class="display-h">Ready to<br><em>get started?</em></h2>
+      <div class="contact-details">
+        <div class="contact-row"><span class="contact-lbl">Location</span><span class="contact-val">Bronte Road Centre, Suite 402<br>9–13 Bronte Rd, Bondi Junction</span></div>
+        <div class="contact-row"><span class="contact-lbl">Phone</span><span class="contact-val"><a href="tel:0435760451">0435 760 451</a></span></div>
+        <div class="contact-row"><span class="contact-lbl">Email</span><span class="contact-val"><a href="mailto:info@centralsparkpsychotherapy.com.au">info@centralsparkpsychotherapy.com.au</a></span></div>
+        <div class="contact-row"><span class="contact-lbl">Sessions</span><span class="contact-val">In person (Bondi Junction) &amp; online across Sydney</span></div>
+        <div class="contact-row"><span class="contact-lbl">Response</span><span class="contact-val">Careena replies within 24 hours</span></div>
+      </div>
+      <a class="btn-primary" href="tel:0435760451">Call now</a>
+      <div style="margin-top:2.5rem;">
+        <div class="map-wrap" style="height:240px;">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.407!2d151.2466!3d-33.8929!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12adf11606c2ff%3A0x82c79272bc5ca824!2s9-13+Bronte+Rd%2C+Bondi+Junction+NSW+2022!5e0!3m2!1sen!2sau!4v1710000000000"
+            allowfullscreen loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Central Spark location">
+          </iframe>
+        </div>
+        <p style="font-size:0.75rem; color:var(--sage); margin-top:0.7rem; letter-spacing:0.05em;">Bronte Road Centre, Suite 402 · Bondi Junction</p>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="handleForm(event)">
+      <div class="form-row">
+        <div class="form-field"><label>Name</label><input type="text" placeholder="Your name"></div>
+        <div class="form-field"><label>Phone</label><input type="tel" placeholder="Your number"></div>
+      </div>
+      <div class="form-field"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+      <div class="form-field"><label>Message</label><textarea rows="5" placeholder="Tell me a little about what's bringing you here…"></textarea></div>
+      <button type="submit" class="form-submit">Send request</button>
+    </form>
+  </section>
+
+</div><!-- /home -->
+
+<!-- ════ PSYCHOTHERAPY ════ -->
+<div class="page" id="page-psychotherapy">
+  <div class="page-hero">
+    <p class="section-eyebrow">Services</p>
+    <h1 class="display-h">Psychotherapy <em>at Central Spark</em></h1>
+  </div>
+
+  <div class="psych-intro">
+    <p>Careena is highly trained and experienced in several therapeutic modalities, allowing her to customise her approach to align with your unique self and life experience. By integrating various methods, she provides comprehensive and personalised care.</p>
+  </div>
+
+  <div class="modality-section">
+    <div class="modality-label">
+      <div class="num">01</div>
+      <h2>Gestalt<br>Therapy</h2>
+    </div>
+    <div class="modality-body">
+      <h3>What is Gestalt Therapy?</h3>
+      <p>A humanistic psychotherapy approach that emphasises personal responsibility and focuses on the present moment. It helps individuals gain awareness of their thoughts, feelings, and actions to achieve personal growth and self-acceptance.</p>
+      <h3>Key concepts</h3>
+      <ul>
+        <li><strong>Present moment</strong> — becoming aware of current thoughts, feelings, and behaviours to foster greater self-awareness and insight.</li>
+        <li><strong>Wholistic approach</strong> — recognises the interconnectedness of mind and body, addressing emotional, cognitive, and physical aspects of experience.</li>
+        <li><strong>Integration</strong> — clients are encouraged to integrate fragmented parts of self and experience a more cohesive sense of identity.</li>
+        <li><strong>Experiential techniques</strong> — including Parts Work and the Empty Chair technique, facilitating emotional expression and resolution.</li>
+      </ul>
+      <h3>Benefits</h3>
+      <ul>
+        <li>Enhanced self-awareness and personal insight</li>
+        <li>Improved relationships and communication</li>
+        <li>Personal growth and lasting transformation</li>
+      </ul>
+      <div style="margin-top:2rem;"><a class="btn-primary" onclick="go('contact')">Book now</a></div>
+    </div>
+  </div>
+
+  <div class="modality-section">
+    <div class="modality-label">
+      <div class="num">02</div>
+      <h2>Applied<br>Mindfulness</h2>
+    </div>
+    <div class="modality-body">
+      <h3>What is Applied Mindfulness?</h3>
+      <p>The practice of being fully present in the moment, paying attention to your thoughts, feelings, and bodily sensations without judgment. By practising mindfulness, you cultivate calm, awareness, and focus.</p>
+      <p>Techniques including meditation, deep breathing, and body scans help reduce stress, improve mental clarity, and enhance emotional wellbeing. Careena integrates mindfulness practically and intentionally — not as a separate add-on, but as a living, embodied skill.</p>
+      <div style="margin-top:2rem;"><a class="btn-primary" onclick="go('contact')">Book now</a></div>
+    </div>
+  </div>
+
+  <div class="modality-section">
+    <div class="modality-label">
+      <div class="num">03</div>
+      <h2>EMDR<br>Therapy</h2>
+    </div>
+    <div class="modality-body">
+      <h3>What is EMDR?</h3>
+      <p>Eye Movement Desensitisation and Reprocessing (EMDR) is a highly effective approach designed to help individuals process and heal from traumatic experiences. Widely used to treat PTSD and other conditions including anxiety, depression, and phobias.</p>
+      <h3>Conditions EMDR addresses</h3>
+      <ul>
+        <li>Post-traumatic stress disorder (PTSD)</li>
+        <li>Anxiety disorders and panic attacks</li>
+        <li>Depression</li>
+        <li>Phobias</li>
+        <li>Relational wounds and attachment injuries</li>
+        <li>Shame-based memories and core negative beliefs</li>
+      </ul>
+      <div style="margin-top:2rem; display:flex; gap:1rem; flex-wrap:wrap;">
+        <a class="btn-primary" onclick="go('emdr')">Full EMDR page</a>
+        <a class="btn-ghost" onclick="go('contact')">Book now</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="modality-section">
+    <div class="modality-label">
+      <div class="num">04</div>
+      <h2>Depth<br>Enquiry™</h2>
+    </div>
+    <div class="modality-body">
+      <h3>What is Depth Enquiry™?</h3>
+      <p>An innovative therapeutic method designed to resolve trauma and underlying shame. Developed by Amanda Gruhn, it emerged from extensive work with clients experiencing PTSD and trauma-related symptoms.</p>
+      <p>Built upon the principles of EMDR and informed by somatic theories from Bessel van der Kolk, Pat Ogden, and Peter Levine — grounded in Gestalt psychotherapy. Careena was among the first therapists in Australia trained in Depth Enquiry™.</p>
+      <h3>Why Depth Enquiry™?</h3>
+      <ul>
+        <li>Effective resolution of resistant traumas and negative beliefs</li>
+        <li>Gentle, supportive process ensuring a safe therapeutic environment</li>
+        <li>Holistic — combines EMDR with somatic theory and Gestalt psychotherapy</li>
+      </ul>
+      <div style="margin-top:2rem;"><a class="btn-primary" onclick="go('contact')">Book now</a></div>
+    </div>
+  </div>
+
+  <div class="modality-section" style="background:var(--cream)">
+    <div class="modality-label">
+      <div class="num" style="opacity:0.12">—</div>
+      <h2>Areas<br>of work</h2>
+    </div>
+    <div class="modality-body">
+      <h3>Trauma &amp; PTSD</h3>
+      <p>When the nervous system is overwhelmed by traumatic experiences it can result in persistent stress responses and difficulties processing emotions. EMDR and Depth Enquiry™ are two specialist approaches Careena uses to help people with trauma histories live fuller, easier lives.</p>
+      <h3>Anxiety</h3>
+      <p>Anxiety becomes a concern when it is persistent, overwhelming, or disproportionate — negatively affecting daily life and functioning. Careena works across the physical, emotional, and behavioural dimensions of anxiety.</p>
+      <h3>Depression</h3>
+      <p>A serious mental health condition characterised by persistent sadness, hopelessness, and loss of interest. Careena provides comprehensive support across emotional, physical, cognitive, and behavioural dimensions.</p>
+      <h3>Other areas</h3>
+      <ul>
+        <li>Chronic health conditions</li>
+        <li>Grief and loss</li>
+        <li>Identity and life transitions</li>
+        <li>Relational and attachment difficulties</li>
+        <li>Addictions and core negative self-beliefs</li>
+        <li>Performance blocks and shame</li>
+      </ul>
+    </div>
+  </div>
+</div><!-- /psychotherapy -->
+
+<!-- ════ EMDR ════ -->
+<div class="page" id="page-emdr">
+  <div class="page-hero">
+    <p class="section-eyebrow">Specialisation</p>
+    <h1 class="display-h">EMDR Therapy<br><em>in Bondi Junction</em></h1>
+  </div>
+
+  <div class="emdr-intro">
+    <div>
+      <p class="section-eyebrow">What is EMDR?</p>
+      <p>EMDR is a focused therapy that helps the brain reprocess distressing experiences so they no longer feel immediate, overwhelming, or stuck. When difficult memories are properly integrated, they lose their emotional charge and stop intruding into the present.</p>
+      <p>I offer EMDR for adults who want careful, structured work on distressing or overwhelming experiences — whether recent or long-standing — including trauma, relational wounds, phobias, performance blocks, medical events, shame-based memories, or attachment injuries that feel unresolved despite insight and effort.</p>
+      <p>Sessions are paced thoughtfully and grounded in a steady therapeutic relationship, so that processing feels contained rather than destabilising.</p>
+    </div>
+    <div class="emdr-visual">
+      <svg viewBox="0 0 320 320" width="280" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <circle cx="160" cy="160" r="145" stroke="rgba(181,96,60,0.14)" stroke-width="1"/>
+        <circle cx="160" cy="160" r="110" stroke="rgba(122,140,114,0.2)" stroke-width="1"/>
+        <circle cx="160" cy="160" r="75" stroke="rgba(181,96,60,0.1)" stroke-width="1"/>
+        <ellipse cx="160" cy="160" rx="90" ry="45" stroke="rgba(181,96,60,0.35)" stroke-width="1.5"/>
+        <circle cx="160" cy="160" r="22" fill="rgba(181,96,60,0.15)" stroke="rgba(181,96,60,0.4)" stroke-width="1"/>
+        <circle cx="160" cy="160" r="10" fill="rgba(181,96,60,0.3)"/>
+        <line x1="70" y1="160" x2="250" y2="160" stroke="rgba(181,96,60,0.15)" stroke-width="1" stroke-dasharray="4 6"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="emdr-body">
+    <p class="section-eyebrow">What to expect</p>
+    <h2 class="display-h" style="font-size:clamp(1.9rem,3vw,3rem); margin-bottom:0.5rem;">The EMDR <em>process</em></h2>
+    <div class="emdr-steps">
+      <div class="emdr-step">
+        <div class="step-num">01</div>
+        <h3>Preparation</h3>
+        <p>We take time to understand your history, identify specific memories or triggers, and build strategies to ensure you feel steady and resourced before processing begins.</p>
+      </div>
+      <div class="emdr-step">
+        <div class="step-num">02</div>
+        <h3>Processing</h3>
+        <p>We focus on one memory or theme at a time, using bilateral stimulation (such as eye movements) to help the brain reprocess the experience. You remain aware and in control throughout. The aim is not to re-live events, but to allow them to become integrated.</p>
+      </div>
+      <div class="emdr-step">
+        <div class="step-num">03</div>
+        <h3>Integration</h3>
+        <p>Sessions are paced to your capacity and we adjust as needed. EMDR can be brief and targeted, or integrated into longer-term therapeutic work, depending on your goals.</p>
+      </div>
+    </div>
+    <p style="font-family:var(--fd); font-style:italic; font-size:1.15rem; color:var(--mid); max-width:65ch; margin: 2rem 0 3rem;">EMDR is most effective when carefully prepared and thoughtfully delivered. If you'd like to explore whether it's appropriate for you, we can discuss this together.</p>
+    <a class="btn-primary" onclick="go('contact')">Book a consultation</a>
+  </div>
+
+  <div class="emdr-conditions">
+    <h2 class="display-h">Conditions EMDR<br>can <em>help with</em></h2>
+    <div class="conditions-list">
+      <div class="condition-pill">Post-Traumatic Stress Disorder</div>
+      <div class="condition-pill">Anxiety Disorders</div>
+      <div class="condition-pill">Depression</div>
+      <div class="condition-pill">Phobias</div>
+      <div class="condition-pill">Panic Attacks</div>
+      <div class="condition-pill">Relational Wounds</div>
+      <div class="condition-pill">Performance Blocks</div>
+      <div class="condition-pill">Shame-Based Memories</div>
+      <div class="condition-pill">Attachment Injuries</div>
+    </div>
+  </div>
+</div><!-- /emdr -->
+
+<!-- ════ ABOUT ════ -->
+<div class="page" id="page-about">
+  <div class="page-hero">
+    <p class="section-eyebrow">About</p>
+    <h1 class="display-h">Central Spark<br><em>Psychotherapy</em></h1>
+  </div>
+
+  <div class="about-main">
+    <div>
+      <div class="careena-photo-wrap" style="margin-bottom:2.5rem;">
+        <img class="careena-photo" src="https://centralsparkpsychotherapy.com.au/wp-content/uploads/2025/05/image-48-rotated.jpg" alt="Careena Cook — Clinical Psychotherapist at Central Spark">
+        <div class="careena-photo-caption">
+          <h3>Careena Cook</h3>
+          <p>Clinical Psychotherapist · PACFA #32833</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="section-eyebrow">Careena Cook</p>
+      <h2 class="display-h" style="font-size:clamp(1.8rem,2.8vw,2.8rem); margin-bottom:1.5rem;">Senior Therapist &amp;<br><em>Clinical Psychotherapist</em></h2>
+      <p>Careena is naturally drawn to the helping professions and has held various counselling and rehabilitation roles across diverse contexts for over 25 years. This, combined with a deep love of learning, means she brings a depth and breadth of knowledge to her work that goes well beyond procedure and technique.</p>
+      <p>Careena is a firm believer that therapists should walk the walk — she undergoes her own therapy and undertakes regular clinical supervision. She remains committed to deepening her knowledge through ongoing professional development.</p>
+      <p>She has been working in private practice since 2013, and was among the first therapists in Australia trained in Depth Enquiry™ by Amanda Gruhn.</p>
+      <div style="margin-top:2rem; display:flex; gap:1rem; flex-wrap:wrap;">
+        <a class="btn-primary" onclick="go('contact')">Book a session</a>
+        <a class="btn-ghost" href="tel:0435760451">0435 760 451</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-story">
+    <div class="story-inner">
+      <p class="section-eyebrow">The name</p>
+      <h2 class="display-h">The <em>spark</em> within</h2>
+      <p>Central Spark is a Counselling and Psychotherapy Service in Bondi Junction (and online) started by Careena Cook in 2013.</p>
+      <p>The concept behind the name is that there is a spark of vital life energy within us that cannot be extinguished — though it is often lost or hidden. Through various difficulties of life we become disconnected from the source of that vital spark.</p>
+      <p>It is the privileged task of the therapist to support clients through their own process of reconnection. This process is what is meant by recovery.</p>
+    </div>
+  </div>
+
+  <!-- About page map strip -->
+  <div style="padding:0 5vw 5rem; border-top:1px solid var(--rule);">
+    <p class="section-eyebrow" style="margin-bottom:1rem; padding-top:4rem;">Location</p>
+    <div class="map-wrap" style="height:300px;">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.407!2d151.2466!3d-33.8929!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12adf11606c2ff%3A0x82c79272bc5ca824!2s9-13+Bronte+Rd%2C+Bondi+Junction+NSW+2022!5e0!3m2!1sen!2sau!4v1710000000000"
+        allowfullscreen loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Central Spark location">
+      </iframe>
+    </div>
+    <div style="margin-top:1rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+      <p style="font-size:0.85rem; color:var(--mid);">Bronte Road Centre, Suite 402 · 9–13 Bronte Rd, Bondi Junction</p>
+      <a href="https://maps.google.com/?q=9-13+Bronte+Rd+Bondi+Junction+NSW+2022" target="_blank" class="btn-ghost">Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="about-quals">
+    <div>
+      <p class="section-eyebrow">Credentials</p>
+      <h2 class="display-h">Qualifications &amp;<br><em>memberships</em></h2>
+    </div>
+    <ul class="quals-list">
+      <li>Master of Counselling &amp; Psychotherapy (MCAP)</li>
+      <li>Graduate Diploma of Rehabilitation Counselling</li>
+      <li>Graduate Certificate Gestalt Therapy</li>
+      <li>Bachelor of Arts (Philosophy, Sociology)</li>
+      <li>Diploma of Teaching (Infants &amp; Primary)</li>
+      <li>Diploma of Health Counselling</li>
+      <li>Clinical Psychotherapist — PACFA #32833</li>
+      <li>Full Member of EMDRAA</li>
+      <li>Professional Supervisor, Level 4</li>
+      <li>One of Australia's first Depth Enquiry™ practitioners</li>
+    </ul>
+  </div>
+</div><!-- /about -->
+
+<!-- ════ FAQ ════ -->
+<div class="page" id="page-faq">
+  <div class="page-hero">
+    <p class="section-eyebrow">Support</p>
+    <h1 class="display-h">Frequently asked<br><em>questions</em></h1>
+  </div>
+
+  <div class="faq-body">
+    <div class="faq-aside">
+      <p class="section-eyebrow">Have a question?</p>
+      <p>If you can't find what you're looking for, please reach out directly. Careena replies within 24 hours.</p>
+      <a class="btn-primary" onclick="go('contact')">Get in touch</a><br><br>
+      <a class="btn-ghost" href="tel:0435760451">Call 0435 760 451</a>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What if I feel anxious about therapy?<span class="faq-icon"></span></button>
+        <div class="faq-a">Feeling anxious about going to therapy is a very common experience, especially if it's your first time or if you've had previous negative experiences. This anxiety often arises from the fear of the unknown, vulnerability, or concerns about discussing personal issues with a stranger. Therapy is a safe space designed to help you explore these feelings at your own pace. By discussing your anxiety with Careena, you can work together to make the process more comfortable and tailored to your needs.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How long will my therapy take?<span class="faq-icon"></span></button>
+        <div class="faq-a">The duration of therapy varies widely depending on individual needs, goals, and the type of therapy you're receiving. Some people find significant relief in just a few sessions, while others may benefit from longer-term therapy spanning months or even years. Factors such as the complexity of the issues, your progress, and your commitment to the process will influence the timeline. Careena will provide guidance based on her experience and your specific goals.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What if I become dependent on my therapist?<span class="faq-icon"></span></button>
+        <div class="faq-a">It's common to worry about becoming dependent on your therapist. While it's important to build trust with Careena, the goal is to empower you to develop the tools and confidence to manage life's challenges independently. If you feel overly reliant, discussing these feelings openly with her can help balance the relationship and ensure your therapy remains effective.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What should I ask myself if I'm considering therapy?<span class="faq-icon"></span></button>
+        <div class="faq-a">Start by asking: what specific issues or challenges am I facing that I want to address? Consider whether you're open to exploring your thoughts and emotions, and whether you're ready to commit time and effort to the process. Reflect on your expectations — what do you hope to achieve? Finally, think about the kind of therapist you'd feel comfortable with, considering their approach, experience, and personality.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What therapeutic approaches does Careena use?<span class="faq-icon"></span></button>
+        <div class="faq-a">Careena is highly trained and experienced in several modalities, including: EMDR Therapy, Gestalt Therapy, Depth Enquiry™, Applied Mindfulness, Psychodynamic Therapy, Dialectical Behaviour Therapy (DBT), Somatic Approaches, and Cognitive Behavioural Therapy (CBT). These diverse methods ensure your therapy experience is both effective and uniquely tailored to you.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What should I expect in my first session?<span class="faq-icon"></span></button>
+        <div class="faq-a">Expect to be welcomed. Careena will encourage you to talk as little or as much as you want — the most important thing is that you feel comfortable and that this is your space. She will likely ask questions about your background, current concerns, and goals. It is also a chance for you to ask questions about the therapeutic process and what to expect going forward. It is normal to feel nervous, but this is a safe space designed to help you explore at your own pace.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How do I make an appointment?<span class="faq-icon"></span></button>
+        <div class="faq-a">You can contact Careena any time via the contact page or by texting 0435 760 451. Careena will reply within 24 hours. You're also welcome to use the enquiry form on this site.</div>
+      </div>
+    </div>
+  </div>
+</div><!-- /faq -->
+
+<!-- ════ CONTACT ════ -->
+<div class="page" id="page-contact">
+  <div class="page-hero">
+    <p class="section-eyebrow">Get in touch</p>
+    <h1 class="display-h">Book a<br><em>session</em></h1>
+  </div>
+
+  <section style="padding:5rem 5vw; display:grid; grid-template-columns:1fr 1fr; gap:8vw; align-items:start;">
+    <div>
+      <p class="section-eyebrow">Contact details</p>
+      <h2 class="display-h" style="font-size:clamp(1.8rem,2.8vw,2.8rem); margin-bottom:2rem;">Careena is available<br><em>to speak with you</em></h2>
+      <div class="contact-details">
+        <div class="contact-row"><span class="contact-lbl">Location</span><span class="contact-val">Bronte Road Centre, Suite 402<br>9–13 Bronte Rd, Bondi Junction NSW</span></div>
+        <div class="contact-row"><span class="contact-lbl">Phone</span><span class="contact-val"><a href="tel:0435760451">0435 760 451</a></span></div>
+        <div class="contact-row"><span class="contact-lbl">Email</span><span class="contact-val"><a href="mailto:info@centralsparkpsychotherapy.com.au">info@centralsparkpsychotherapy.com.au</a></span></div>
+        <div class="contact-row"><span class="contact-lbl">Sessions</span><span class="contact-val">Weekly or fortnightly<br>In person (Bondi Junction) &amp; online across Sydney</span></div>
+        <div class="contact-row"><span class="contact-lbl">Response</span><span class="contact-val">Careena replies within 24 hours</span></div>
+        <div class="contact-row"><span class="contact-lbl">Instagram</span><span class="contact-val"><a href="https://www.instagram.com/centralsparkpsychotherapy/" target="_blank">@centralsparkpsychotherapy</a></span></div>
+        <div class="contact-row"><span class="contact-lbl">Facebook</span><span class="contact-val"><a href="https://www.facebook.com/cspcounselling/" target="_blank">cspcounselling</a></span></div>
+      </div>
+      <a class="btn-primary" href="tel:0435760451">Call now</a>
+    </div>
+    <form class="contact-form" onsubmit="handleForm(event)">
+      <div class="form-row">
+        <div class="form-field"><label>Name</label><input type="text" placeholder="Your name"></div>
+        <div class="form-field"><label>Phone</label><input type="tel" placeholder="Your number"></div>
+      </div>
+      <div class="form-field"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+      <div class="form-field"><label>What brings you here?</label><textarea rows="6" placeholder="Tell me a little about what's bringing you here…"></textarea></div>
+      <button type="submit" class="form-submit">Send request</button>
+    </form>
+  </section>
+
+  <!-- MAP -->
+  <div style="padding:0 5vw 5rem;">
+    <p class="section-eyebrow" style="margin-bottom:1rem;">Find us</p>
+    <div class="map-wrap">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.407!2d151.2466!3d-33.8929!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12adf11606c2ff%3A0x82c79272bc5ca824!2s9-13+Bronte+Rd%2C+Bondi+Junction+NSW+2022!5e0!3m2!1sen!2sau!4v1710000000000"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Central Spark Psychotherapy location — 9-13 Bronte Rd, Bondi Junction">
+      </iframe>
+    </div>
+    <div style="margin-top:1.5rem; display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:1rem;">
+      <p style="font-size:0.88rem; color:var(--mid);">Bronte Road Centre, Suite 402 · 9–13 Bronte Rd, Bondi Junction NSW 2022</p>
+      <a href="https://maps.google.com/?q=9-13+Bronte+Rd+Bondi+Junction+NSW+2022" target="_blank" class="btn-ghost">Open in Google Maps</a>
+    </div>
+  </div>
+
+  <div style="background:var(--cream); border-top:1px solid var(--rule); padding:3rem 5vw;">
+    <p class="section-eyebrow">Areas served</p>
+    <p style="font-size:0.9rem; color:var(--mid); max-width:80ch; line-height:1.7; margin-top:0.5rem;">
+      Bondi Junction and the Eastern Suburbs — including Bronte, Clovelly, Coogee, Double Bay, Paddington, Woollahra, Rose Bay, Vaucluse, Bellevue Hill, Randwick, and Maroubra — plus Inner Sydney, North Shore, Northern Beaches, Inner West, and Western Sydney through online sessions.
+    </p>
+  </div>
+</div><!-- /contact -->
+
+</div><!-- /app -->
+
+<footer>
+  <span class="footer-logo" onclick="go('home')">Central <span>Spark</span> Psychotherapy</span>
+  <ul class="footer-links">
+    <li><a onclick="go('psychotherapy')">Psychotherapy</a></li>
+    <li><a onclick="go('emdr')">EMDR</a></li>
+    <li><a onclick="go('about')">About</a></li>
+    <li><a onclick="go('faq')">FAQ</a></li>
+    <li><a onclick="go('contact')">Contact</a></li>
+  </ul>
+  <p class="footer-copy">© 2025 Central Spark Psychotherapy · Bondi Junction, Sydney</p>
+</footer>
+
+<script>
+function go(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  const t = document.getElementById('page-' + page);
+  if (t) { t.classList.add('active'); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+  const link = document.querySelector(`[data-p="${page}"]`);
+  if (link) link.classList.add('active');
+}
+
+function toggleMenu() { document.getElementById('mNav').classList.toggle('open'); }
+function closeMenu() { document.getElementById('mNav').classList.remove('open'); }
+
+function toggleFaq(btn) {
+  const a = btn.nextElementSibling;
+  const wasOpen = a.classList.contains('open');
+  document.querySelectorAll('.faq-a.open').forEach(x => x.classList.remove('open'));
+  document.querySelectorAll('.faq-q.open').forEach(x => x.classList.remove('open'));
+  if (!wasOpen) { a.classList.add('open'); btn.classList.add('open'); }
+}
+
+function handleForm(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit');
+  btn.textContent = 'Message sent ✓';
+  btn.disabled = true;
+  e.target.reset();
+}
+</script>
+</body>
+</html>
