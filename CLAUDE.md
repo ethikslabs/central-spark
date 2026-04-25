@@ -7,7 +7,7 @@ No build step. No framework. One file: `index.html`.
 
 ## What to do
 
-1. **Create GitHub repo** `jp-system/central-spark` and push this folder
+1. **Create GitHub repo** `ethikslabs/central-spark` and push this folder
 2. **Deploy to EC2** at `/home/ec2-user/sites/central-spark/`
 3. **Create Nginx vhost** for `centralpark.ethikslabs.com`
 4. **Add Cloudflare DNS** A record pointing at EC2
@@ -34,7 +34,7 @@ Nginx:      Already running other vhosts
 
 ```bash
 git init
-git remote add origin git@github.com:jp-system/central-spark.git
+git remote add origin git@github.com:ethikslabs/central-spark.git
 git add .
 git commit -m "initial: central spark staging site"
 git push -u origin main
@@ -49,7 +49,7 @@ ssh ec2-user@54.252.185.132
 
 mkdir -p /home/ec2-user/sites
 cd /home/ec2-user/sites
-git clone git@github.com:jp-system/central-spark.git central-spark
+git clone git@github.com:ethikslabs/central-spark.git central-spark
 
 chmod 644 /home/ec2-user/sites/central-spark/index.html
 chmod 755 /home/ec2-user/sites/central-spark
