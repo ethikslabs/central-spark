@@ -1,5 +1,11 @@
 # Central Spark Psychotherapy — Deployment
 
+## Universal init
+
+On `/init`, follow `../../CONTROL/INIT_PROTOCOL.md`. This repo file adds local rules only; it does not own the workspace init protocol.
+
+---
+
 Static single-file HTML site for Careena Cook / centralsparkpsychotherapy.com.au.
 No build step. No framework. One file: `index.html`.
 
